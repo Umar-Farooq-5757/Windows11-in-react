@@ -1,0 +1,8 @@
+@import "tailwindcss";
+main{
+    background: url(./images/img0.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    /* color:#ffd580 ; */
+}
