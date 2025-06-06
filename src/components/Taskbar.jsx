@@ -15,6 +15,7 @@ import {
 import { format } from "date-fns";
 import Modal from "./Modal";
 import NightLightModal from "./NightLightModal";
+import StartMenu from "./StartMenu";
 
 const Taskbar = ({
   setMenuPosition,
@@ -25,6 +26,8 @@ const Taskbar = ({
   setAreQuickSettingsOpen,
   areQuickSettingsOpen,
 }) => {
+  const [isStartMenuOpen, setIsStartMenuOpen] = useState(true);
+
   const now = new Date();
   const formattedTime = format(now, "h:mm aa");
   const formattedDate = format(now, "dd/MM/yy");
@@ -47,13 +50,18 @@ const Taskbar = ({
       }}
       className={`fixed ${
         isDark ? "bg-[#313131]" : "bg-[#d2def5]"
-      } z-10 flex justify-between items-center bottom-0 left-0 right-0 max-h-40 px-6 py-0 overflow-hidden`}
+      } z-10 flex justify-between items-center bottom-0 left-0 right-0 max-h-40 px-2 lg:px-6 py-0 overflow-hidden`}
     >
       <div></div>
 
       {/* MIDDLE */}
       <div className="flex justify-between items-center gap-4 justify-self-center ml-48">
-        <div className="py-2 px-1 hover:bg-white transition-all rounded-sm">
+        <div
+          onClick={() => {
+            setIsStartMenuOpen(!isStartMenuOpen);
+          }}
+          className="py-2 px-1 hover:bg-white transition-all rounded-sm"
+        >
           <img
             className="h-6 w-6 active:scale-75 transition-all"
             src={img0}
@@ -126,6 +134,12 @@ const Taskbar = ({
         setIsNightLightOn={setIsNightLightOn}
       />
       <NightLightModal isNightLightOn={isNightLightOn} />
+
+      <StartMenu
+        isDark={isDark}
+        isStartMenuOpen={isStartMenuOpen}
+        setIsStartMenuOpen={setIsStartMenuOpen}
+      />
     </footer>
   );
 };
