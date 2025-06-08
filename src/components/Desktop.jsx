@@ -22,7 +22,7 @@ const Desktop = () => {
             key={icon.text}
             className="transition-all hover:bg-[#b4cfe2] py-2 px-3 active:scale-75 flex flex-col items-center justify-between gap-1"
           >
-            <a href={icon.link} target={icon.target}>
+            <a className="cursor-default" href={icon.link} target={icon.target}>
               <img className="w-10 h-10" src={icon.logo} alt={icon.text} />
             </a>
             <span className="text-white text-xs">{icon.text}</span>

@@ -1,8 +1,12 @@
 @import "tailwindcss";
-main{
+.desktop{
     background: url(./images/img0.jpg);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
     /* color:#ffd580 ; */
+}
+td, th{
+    border: 1px solid rgb(179, 179, 179);
+    padding: 2px 8px;
 }

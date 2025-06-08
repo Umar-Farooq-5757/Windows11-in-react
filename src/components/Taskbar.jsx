@@ -25,8 +25,9 @@ const Taskbar = ({
   setIsDark,
   setAreQuickSettingsOpen,
   areQuickSettingsOpen,
+  setIsTaskManagerOn
 }) => {
-  const [isStartMenuOpen, setIsStartMenuOpen] = useState(true);
+  const [isStartMenuOpen, setIsStartMenuOpen] = useState(false);
 
   const now = new Date();
   const formattedTime = format(now, "h:mm aa");
@@ -55,12 +56,13 @@ const Taskbar = ({
       <div></div>
 
       {/* MIDDLE */}
-      <div className="flex justify-between items-center gap-4 justify-self-center ml-48">
+      <div className="flex justify-between items-center gap-3 justify-self-center ml-48">
         <div
           onClick={() => {
             setIsStartMenuOpen(!isStartMenuOpen);
+
           }}
-          className="py-2 px-1 hover:bg-white transition-all rounded-sm"
+          className={`py-2 px-1 ${isDark?'hover:bg-[#474747]':'hover:bg-white'}transition-all rounded-sm`}
         >
           <img
             className="h-6 w-6 active:scale-75 transition-all"
@@ -77,7 +79,7 @@ const Taskbar = ({
           return (
             <div
               key={icon.src}
-              className="py-2 px-1 hover:bg-white transition-all rounded-sm"
+              className={`py-2 px-2 ${isDark?'hover:bg-[#474747]':'hover:bg-white'}  transition-all rounded-sm`}
             >
               <img
                 className="h-6 w-6 active:scale-75 transition-all"
@@ -95,16 +97,17 @@ const Taskbar = ({
           isDark ? "text-white" : ""
         }`}
       >
-        <div className="py-2 rounded-sm hover:bg-white cursor-pointer transition-all">
+        <div className={`py-2 rounded-sm ${isDark?'hover:bg-[#474747]':'hover:bg-white'} cursor-pointer transition-all`}>
           <ChevronUpIcon className="w-5 h-5" />
         </div>
         <div
           onClick={(e) => {
             e.stopPropagation();
             setAreQuickSettingsOpen(!areQuickSettingsOpen);
+            setIsStartMenuOpen(false)
             setMenuPosition({});
           }}
-          className="flex justify-center items-center gap-2 py-2 px-1 rounded-sm hover:bg-white cursor-pointer transition-all"
+          className={`flex justify-center items-center gap-2 py-2 px-1 rounded-sm ${isDark?'hover:bg-[#474747]':'hover:bg-white'} cursor-pointer transition-all`}
         >
           <div>
             <WifiIcon className="w-5 h-5" />
@@ -120,7 +123,7 @@ const Taskbar = ({
             <Battery50Icon className="w-5 h-5" />
           </div>
         </div>
-        <div className="date-time  text-[11px] py-2 rounded-sm hover:bg-white cursor-pointer transition-all px-1">
+        <div className={`date-time  text-[11px] py-2 rounded-sm ${isDark?'hover:bg-[#474747]':'hover:bg-white'} cursor-pointer transition-all px-1`}>
           <p className="leading-3.5">{formattedTime}</p>
           <p className="leading-3.5">{formattedDate}</p>
         </div>
@@ -139,6 +142,7 @@ const Taskbar = ({
         isDark={isDark}
         isStartMenuOpen={isStartMenuOpen}
         setIsStartMenuOpen={setIsStartMenuOpen}
+        setIsTaskManagerOn={setIsTaskManagerOn}
       />
     </footer>
   );
