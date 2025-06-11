@@ -8,18 +8,18 @@ import personalize from "../images/contextMenu/personalize.png";
 import terminal from "../images/contextMenu/terminal.png";
 import info from "../images/contextMenu/info.png";
 
-const ContextMenu = ({ menuPosition, isDark }) => {
+const ContextMenu = ({ menuPosition, isDark,setIsAboutOn }) => {
   if (!menuPosition.left) return;
 
   const itemsList = [
-    { icon: view, text: "View" },
-    { icon: sort, text: "Sort by" },
-    { icon: refresh, text: "Refresh" },
-    { icon: newIcon, text: "New" },
-    { icon: display, text: "Display settings" },
-    { icon: personalize, text: "Personalize" },
-    { icon: terminal, text: "Open in Terminal" },
-    { icon: info, text: "About" },
+    { icon: view, text: "View", handler:()=>{} },
+    { icon: sort, text: "Sort by", handler:()=>{} },
+    { icon: refresh, text: "Refresh", handler:()=>{} },
+    { icon: newIcon, text: "New", handler:()=>{} },
+    { icon: display, text: "Display settings", handler:()=>{} },
+    { icon: personalize, text: "Personalize", handler:()=>{} },
+    { icon: terminal, text: "Open in Terminal", handler:()=>{} },
+    { icon: info, text: "About", handler:()=>{setIsAboutOn(true)} },
   ];
 
   return (
@@ -35,6 +35,7 @@ const ContextMenu = ({ menuPosition, isDark }) => {
       {itemsList.map((item) => {
         return (
           <div
+          onClick={item.handler}
             className={`flex items-center justify-start gap-3 hover:bg-[#dae1e5] p-2 rounded-sm cursor-default `}
           >
             <img className="w-4 h-4" src={item.icon} alt={item.text} />

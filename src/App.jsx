@@ -4,6 +4,7 @@ import Desktop from "./components/Desktop";
 import Taskbar from "./components/Taskbar";
 import { useEffect, useState } from "react";
 import TaskManager from "./components/WindowsApps/TaskManager";
+import About from "./components/WindowsApps/About";
 
 function App() {
   const [menuPosition, setMenuPosition] = useState({});
@@ -11,7 +12,8 @@ function App() {
   const [areQuickSettingsOpen, setAreQuickSettingsOpen] = useState(false);
   const [isNightLightOn, setIsNightLightOn] = useState(false);
   const [loading, setLoading] = useState(true);
-  const [isTaskManagerOn, setIsTaskManagerOn] = useState(true);
+  const [isTaskManagerOn, setIsTaskManagerOn] = useState(false);
+  const [isAboutOn, setIsAboutOn] = useState(true)
 
   useEffect(() => {
     const handleLoad = () => {
@@ -60,12 +62,14 @@ function App() {
               setIsNightLightOn={setIsNightLightOn}
               setIsTaskManagerOn={setIsTaskManagerOn}
             />
-            <ContextMenu menuPosition={menuPosition} isDark={isDark} />
+            <ContextMenu menuPosition={menuPosition} isDark={isDark} setIsAboutOn={setIsAboutOn} />
 
             <TaskManager
+              isDark={isDark}
               isTaskManagerOn={isTaskManagerOn}
               setIsTaskManagerOn={setIsTaskManagerOn}
             />
+            <About isAboutOn={isAboutOn} setIsAboutOn={setIsAboutOn}/>
           </main>
           <div className="mobile-message block md:hidden text-3xl text-red-500 font-bold fixed top-[50%] left-[50%] -translate-x-[50%] -translate-y-[50%] text-center w-screen">
             Only for desktop screen.

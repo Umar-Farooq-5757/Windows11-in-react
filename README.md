@@ -1,3 +1,11 @@
+# Important Disclaimer
+
+---
+
+***This project is not in anyway affiliated with Microsoft and should not be confused with Microsoft’s Operating System or Products. This is also not Windows 365 cloud PC.***
+
+---
+
 # React + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
