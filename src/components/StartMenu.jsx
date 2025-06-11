@@ -26,12 +26,8 @@ const StartMenu = ({
   setIsStartMenuOpen,
   isDark,
   setIsTaskManagerOn,
+  setIsNotepadOn,
 }) => {
-  
-  const handleTaskManager = () => {
-    setIsTaskManagerOn(true);
-  };
-
   const pinnedApps = [
     { icon: board, text: "Whiteboard", handler: () => {} },
     { icon: calendar, text: "Calendar", handler: () => {} },
@@ -43,7 +39,14 @@ const StartMenu = ({
     { icon: getstarted, text: "Get Started", handler: () => {} },
     { icon: github, text: "Github", handler: () => {} },
     { icon: mail, text: "Mail", handler: () => {} },
-    { icon: notepad, text: "Notepad", handler: () => {} },
+    {
+      icon: notepad,
+      text: "Notepad",
+      handler: () => {
+        setIsNotepadOn(true);
+        setIsStartMenuOpen(false);
+      },
+    },
     { icon: settings, text: "Settings", handler: () => {} },
     { icon: store, text: "Store", handler: () => {} },
     { icon: vb, text: "Dictionary", handler: () => {} },
@@ -52,7 +55,7 @@ const StartMenu = ({
       icon: taskmanager,
       text: "Task Manager",
       handler: () => {
-        handleTaskManager();
+        setIsTaskManagerOn(true);
         setIsStartMenuOpen(false);
       },
     },
@@ -98,7 +101,7 @@ const StartMenu = ({
             {pinnedApps.map((app) => {
               return (
                 <div
-                key={app.text}
+                  key={app.text}
                   onClick={app.handler}
                   className={`pinned-app ${
                     isDark ? "hover:bg-[#3a4d61]" : "hover:bg-white"
@@ -117,7 +120,7 @@ const StartMenu = ({
             {recommendedApps.map((app) => {
               return (
                 <div
-                key={app.text}
+                  key={app.text}
                   className={`pinned-app ${
                     isDark ? "hover:bg-[#3a4d61]" : "hover:bg-white"
                   }  rounded-md px-[10px] py-3 transition-all flex justify-start gap-3 items-center`}

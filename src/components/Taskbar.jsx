@@ -25,7 +25,8 @@ const Taskbar = ({
   setIsDark,
   setAreQuickSettingsOpen,
   areQuickSettingsOpen,
-  setIsTaskManagerOn
+  setIsTaskManagerOn,
+  setIsNotepadOn
 }) => {
   const [isStartMenuOpen, setIsStartMenuOpen] = useState(false);
 
@@ -43,7 +44,7 @@ const Taskbar = ({
 
   return (
     <footer
-      onClick={() => setAreQuickSettingsOpen(false)}
+      onClick={(e) => {setAreQuickSettingsOpen(false); e.stopPropagation();}}
       onContextMenu={(e) => {
         e.preventDefault();
         e.stopPropagation();
@@ -143,6 +144,7 @@ const Taskbar = ({
         isStartMenuOpen={isStartMenuOpen}
         setIsStartMenuOpen={setIsStartMenuOpen}
         setIsTaskManagerOn={setIsTaskManagerOn}
+        setIsNotepadOn={setIsNotepadOn}
       />
     </footer>
   );

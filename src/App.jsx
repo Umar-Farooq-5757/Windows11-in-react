@@ -5,6 +5,7 @@ import Taskbar from "./components/Taskbar";
 import { useEffect, useState } from "react";
 import TaskManager from "./components/WindowsApps/TaskManager";
 import About from "./components/WindowsApps/About";
+import Notepad from "./components/WindowsApps/Notepad";
 
 function App() {
   const [menuPosition, setMenuPosition] = useState({});
@@ -13,7 +14,8 @@ function App() {
   const [isNightLightOn, setIsNightLightOn] = useState(false);
   const [loading, setLoading] = useState(true);
   const [isTaskManagerOn, setIsTaskManagerOn] = useState(false);
-  const [isAboutOn, setIsAboutOn] = useState(true)
+  const [isNotepadOn, setIsNotepadOn] = useState(true);
+  const [isAboutOn, setIsAboutOn] = useState(true);
 
   useEffect(() => {
     const handleLoad = () => {
@@ -61,15 +63,29 @@ function App() {
               isNightLightOn={isNightLightOn}
               setIsNightLightOn={setIsNightLightOn}
               setIsTaskManagerOn={setIsTaskManagerOn}
+              setIsNotepadOn={setIsNotepadOn}
             />
-            <ContextMenu menuPosition={menuPosition} isDark={isDark} setIsAboutOn={setIsAboutOn} />
+            <ContextMenu
+              menuPosition={menuPosition}
+              isDark={isDark}
+              setIsAboutOn={setIsAboutOn}
+            />
 
             <TaskManager
               isDark={isDark}
               isTaskManagerOn={isTaskManagerOn}
               setIsTaskManagerOn={setIsTaskManagerOn}
             />
-            <About isAboutOn={isAboutOn} setIsAboutOn={setIsAboutOn}/>
+            <Notepad
+              isDark={isDark}
+              isNotepadOn={isNotepadOn}
+              setIsNotepadOn={setIsNotepadOn}
+            />
+            <About
+              isDark={isDark}
+              isAboutOn={isAboutOn}
+              setIsAboutOn={setIsAboutOn}
+            />
           </main>
           <div className="mobile-message block md:hidden text-3xl text-red-500 font-bold fixed top-[50%] left-[50%] -translate-x-[50%] -translate-y-[50%] text-center w-screen">
             Only for desktop screen.

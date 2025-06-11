@@ -234,7 +234,7 @@ const Modal = ({
         onClick={(e) => e.stopPropagation()}
         className={`${
           isDark ? "bg-[#242424] shadow-2xl text-white" : "bg-[#e6edf8] text-black"
-        } py-4 px-5 overflow-hidden rounded-lg fixed right-4 h-90 w-90 transition-all ${
+        } py-4 px-5 overflow-hidden rounded-lg fixed right-4 z-50 h-90 w-90 transition-all ${
           areQuickSettingsOpen ? "bottom-[56px]" : "-bottom-96"
         }`}
       >

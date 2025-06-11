@@ -2,7 +2,7 @@
 
 ---
 
-***This project is not in anyway affiliated with Microsoft and should not be confused with Microsoft’s Operating System or Products. This is also not Windows 365 cloud PC.***
+**_This project is not in anyway affiliated with Microsoft and should not be confused with Microsoft’s Operating System or Products. This is also not Windows 365 cloud PC._**
 
 ---
 
